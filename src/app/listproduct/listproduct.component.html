@@ -1,0 +1,62 @@
+<div>
+    <div class="flow">
+        <div style="padding: 30px;">
+            <h3 style="color: white; text-align: left;margin-left: 40px ; font-size: 40px;" >Products</h3>
+            <span>
+                <button type="button" class="btn btn-light" style="margin-left: 70% ;"
+                routerLink="/add">Add new Product</button>
+            </span>
+        </div>
+    </div>
+    <div class="overlap">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Active</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr style="color: black;" *ngFor="let data of Products ;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.category}}</td>
+                    <td>${{data.price}}</td>
+                    <td>    
+                        <!-- color ball logic accordng to quatity -->
+                        <!-- <mat-icon  style="font-size: 10px;color:red">
+                            circle
+                        </mat-icon> -->
+                        <ng-template [ngIf]="data.quantity >= 30">
+                            <mat-icon  style="font-size: 10px;color:green">circle</mat-icon>
+                        </ng-template>
+                        <ng-template [ngIf]="data.quantity < 30 && data.quantity >=10">
+                            <mat-icon  style="font-size: 10px;color:orange">circle</mat-icon>
+                        </ng-template>
+                        <ng-template [ngIf]="data.quantity < 10">
+                            <mat-icon  style="font-size: 10px;color:red">circle</mat-icon>
+                        </ng-template>
+                        {{data.quantity}}
+                    </td>
+                    <!-- <td>
+                        <mat-icon [ngStyle]="{'color':data.quantity=== 0?'red':'green'}">check_circle</mat-icon>
+                    </td> -->
+                    <td>
+                    <ng-template [ngIf]="data.quantity === 0" [ngIfElse]="elseblock">
+                            <mat-icon style="color:red">new_releases</mat-icon>
+                    </ng-template>
+
+                     <ng-template #elseblock>
+                            <mat-icon style="color:green">verified</mat-icon>
+                    </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+.router
+{
+    width: 80%;
+    border : 1px solid grey;
+    border-radius: 4px ;
+    align-items: center;
+    text-align: center;
+    margin-left: 10%;
+    height: auto;
+    min-height: 300px;
+}
